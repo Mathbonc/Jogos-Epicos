@@ -36,10 +36,3 @@ feature: Historico de reviews
         And eu vejo um review deste usuário sobre "Days Gone"
         When eu clico na review em questão
         Then eu vejo a página do review sobre o jogo "Days Gone".
-
-    Scenario: Teste para usar nao usar o git merge
-        Given
-        And
-        When
-        Then
-    
