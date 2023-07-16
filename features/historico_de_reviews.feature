@@ -31,8 +31,15 @@ feature: Historico de reviews
         Then os reviews são reordenados do antigo para o mais novo
         And os reviews são exibidos em ordem cronológica
 
-     Scenario: Abrir review através do histórico do usuário
+    Scenario: Abrir review através do histórico do usuário
         Given estou na página "Histórico de Reviews" do usuário "Maria Eduarda"
         And eu vejo um review deste usuário sobre "Days Gone"
         When eu clico na review em questão
         Then eu vejo a página do review sobre o jogo "Days Gone".
+
+    Scenario: Teste para usar nao usar o git merge
+        Given
+        And
+        When
+        Then
+    
