@@ -13,7 +13,7 @@
     "cy:show-coverage": "open ./cypress-coverage/lcov-report/index.html",
     "lint": "npx eslint \"src/**/*.{js,ts,html}\" --quiet --fix",
     "format": "npx prettier \"src/**/*.{js,ts,html,css,scss}\" --write",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install"
   },
   "private": true,
   "dependencies": {
