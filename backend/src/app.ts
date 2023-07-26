@@ -14,7 +14,10 @@ app.use(
   cors({
     origin: '*',
   })
-);
+  );
+  
+import reviews from './database/reviews';
+console.log(reviews);
 
 setupRoutes(app);
 
