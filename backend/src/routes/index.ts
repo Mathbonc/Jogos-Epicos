@@ -24,6 +24,11 @@ router.get('/historico/category/:category', (req: Request, res: Response) => {
 router.get('/historico/id/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const review = reviews.find((review) => review.id === id);
+
+  if (!review) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+
   res.json(review);
 });
 
@@ -31,6 +36,11 @@ router.get('/historico/id/:id', (req: Request, res: Response) => {
 router.put('/historico/id/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const reviewIndex = reviews.findIndex((review) => review.id === id);
+
+  if (reviewIndex === -1) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+  
   const review = reviews[reviewIndex];
   const updatedReview = { ...review, ...req.body };
   reviews[reviewIndex] = updatedReview;
@@ -41,6 +51,11 @@ router.put('/historico/id/:id', (req: Request, res: Response) => {
 router.delete('/historico/id/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const reviewIndex = reviews.findIndex((review) => review.id === id);
+
+  if (reviewIndex === -1) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+
   reviews.splice(reviewIndex, 1);
   res.sendStatus(204);
 });
