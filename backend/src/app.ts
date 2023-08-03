@@ -17,7 +17,6 @@ app.use(
   );
   
 import reviews from './database/reviews';
-console.log(reviews);
 
 setupRoutes(app);
 

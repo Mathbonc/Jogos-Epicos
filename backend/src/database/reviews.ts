@@ -35,7 +35,7 @@ const reviews: Review[] = [
     },
     {
       id: 3,
-      author_id: 2,
+      author_id: 1,
       name: 'The Last of Us',
       rating: 4,
       description: 'Jogo muito bom, recomendo!',
@@ -46,7 +46,7 @@ const reviews: Review[] = [
     },
     {
       id: 4,
-      author_id: 3,
+      author_id: 1,
       name: 'No Man\'s Sky',
       rating: 3,
       description: 'MineCraft no espaço, muito bom!',
