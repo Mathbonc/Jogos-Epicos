@@ -38,7 +38,7 @@ const reviews: Review[] = [
       author_id: 1,
       name: 'The Last of Us',
       rating: 4,
-      description: 'Jogo muito bom, recomendo!',
+      description: 'Jogo muito dificil, mas muito bom!',
       date: '2022-01-01',
       categories: ['Ação', 'Aventura', 'Zumbi', 'RPG'],
       comments: ['Muito bom mesmo!', 'Jogo muito bom, recomendo!'],
@@ -52,7 +52,7 @@ const reviews: Review[] = [
       description: 'MineCraft no espaço, muito bom!',
       date: '2020-08-01',
       categories: ['Aventura', 'RPG', 'Sobrevivência'],
-      comments: ['Muito bom mesmo!', 'Jogo muito bom, recomendo!'],
+      comments: ['Odiei o jogo!'],
       likes: 1,
     }
   ];
