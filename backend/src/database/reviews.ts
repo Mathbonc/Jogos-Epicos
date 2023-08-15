@@ -15,7 +15,7 @@ const reviews: Review[] = [
       id: 1,
       author_id: 1,
       name: 'Days Gone',
-      rating: 5,
+      rating: 3,
       description: 'Muito legal, amei matar as hordas!',
       date: '2021-01-01',
       categories: ['Zumbi', 'RPG'], 
@@ -35,7 +35,7 @@ const reviews: Review[] = [
     },
     {
       id: 3,
-      author_id: 1,
+      author_id: 2,
       name: 'The Last of Us',
       rating: 4,
       description: 'Jogo muito dificil, mas muito bom!',
@@ -46,7 +46,7 @@ const reviews: Review[] = [
     },
     {
       id: 4,
-      author_id: 1,
+      author_id: 2,
       name: 'No Man\'s Sky',
       rating: 3,
       description: 'MineCraft no espaço, muito bom!',

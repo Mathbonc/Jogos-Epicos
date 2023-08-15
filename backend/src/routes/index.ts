@@ -13,8 +13,9 @@ const prefix = '/api';
 const logged_in_id = 1;
 
 //function to verify username
-function verifyUsername(username: string) {
-  const user = users.find((user) => user.username === username);
+function verifyUserId(id: number) {
+  const user = users.find((user) => user.id === id);
+  console.log(users);
   if (!user) {
     return null;
   }
@@ -30,47 +31,49 @@ function verifyReviewId(id: number) {
   return review;
 }
 
-//Route to get all reviews of that user by username
-router.get('/user/:username/historico', (req: Request, res: Response) => {
+//Route to get all reviews of that user by id
+router.get('/user/:id_user/historico', (req: Request, res: Response) => {
   //check user
-  const user = verifyUsername(req.params.username);
+  const userid = parseInt(req.params.id_user);
+  const user = verifyUserId(userid);
+
   if (user === null) {
-    return res.status(404).json({ error: 'User not found' });
+    return res.status(404).json({ error: 'Usuário não encontrado' });
   }
 
-  const review = reviews.filter((review) => review.author_id === user.id);
-  res.json(review);
+  const review_list = reviews.filter((review) => review.author_id === user.id);
+  res.json(review_list);
 });
 
 
 //Route to filter reviews by category
-router.get('/user/:username/historico/category/:category', (req: Request, res: Response) => {
+router.get('/user/:id_user/historico/category/:category', (req: Request, res: Response) => {
   //check user
-  const user = verifyUsername(req.params.username);
+  const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
-    return res.status(404).json({ error: 'User not found' });
+    return res.status(404).json({ error: 'Usuário não encontrado' });
   }
 
   //check category
   const category = req.params.category;
   const review = reviews.filter((review) => review.categories.includes(category) && review.author_id === user.id);
   if (review.length === 0) {
-    return res.status(404).json({ error: 'Any reviews with that category' });
+    return res.status(404).json({ error: 'Categoria não encontrada' });
   }
 
   res.json(review);
 });
 
 //Route to get a review by id
-router.get('/user/:username/historico/id/:id', (req: Request, res: Response) => {
+router.get('/user/:id_user/historico/id_review/:id_review', (req: Request, res: Response) => {
   //check user
-  const user = verifyUsername(req.params.username);
+  const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
     return res.status(404).json({ error: 'User not found' });
   }
 
   //check review id
-  const review = verifyReviewId(parseInt(req.params.id));
+  const review = verifyReviewId(parseInt(req.params.id_review));
   if (review === null) {
     return res.status(404).json({ error: 'Review not found' });
   }
@@ -85,15 +88,15 @@ router.get('/user/:username/historico/id/:id', (req: Request, res: Response) => 
 
 //Route to update a review by id
 //Only the author of the review can update it and only if the author is logged in
-router.put('/user/:username/historico/id/:id', (req: Request, res: Response) => {
+router.put('/user/:id_user/historico/id_review/:id_review', (req: Request, res: Response) => {
   //check user
-  const user = verifyUsername(req.params.username);
+  const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
     return res.status(404).json({ error: 'User not found' });
   }
 
   //check review id
-  const review_to_edit = verifyReviewId(parseInt(req.params.id));
+  const review_to_edit = verifyReviewId(parseInt(req.params.id_review));
   if (review_to_edit === null) {
     return res.status(404).json({ error: 'Review not found' });
   }
@@ -120,15 +123,15 @@ router.put('/user/:username/historico/id/:id', (req: Request, res: Response) => 
 });
 
 //Route to delete a review by id
-router.delete('/user/:username/historico/id/:id', (req: Request, res: Response) => {
+router.delete('/user/:id_user/historico/id_review/:id_review', (req: Request, res: Response) => {
   //check user
-  const user = verifyUsername(req.params.username);
+  const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
     return res.status(404).json({ error: 'User not found' });
   }
 
   //check review id
-  const review_to_delete = verifyReviewId(parseInt(req.params.id));
+  const review_to_delete = verifyReviewId(parseInt(req.params.id_review));
   if (review_to_delete === null) {
     return res.status(404).json({ error: 'Review not found' });
   }
