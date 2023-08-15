@@ -69,18 +69,18 @@ router.get('/user/:id_user/historico/id_review/:id_review', (req: Request, res: 
   //check user
   const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
-    return res.status(404).json({ error: 'User not found' });
+    return res.status(404).json({ error: 'Usuário não encontrado' });
   }
 
   //check review id
   const review = verifyReviewId(parseInt(req.params.id_review));
   if (review === null) {
-    return res.status(404).json({ error: 'Review not found' });
+    return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   //check if review belongs to user
   if (review.author_id !== user.id) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Não autorizado' });
   }
 
   res.json(review);
@@ -92,28 +92,28 @@ router.put('/user/:id_user/historico/id_review/:id_review', (req: Request, res: 
   //check user
   const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
-    return res.status(404).json({ error: 'User not found' });
+    return res.status(404).json({ error: 'Usuário não encontrado' });
   }
 
   //check review id
   const review_to_edit = verifyReviewId(parseInt(req.params.id_review));
   if (review_to_edit === null) {
-    return res.status(404).json({ error: 'Review not found' });
+    return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   //check if review belongs to user
   if (review_to_edit.author_id !== user.id) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Não autorizado' });
   }
 
   const reviewIndex = reviews.findIndex((review_to_edit) => review_to_edit.id === parseInt(req.params.id));
 
   if (reviewIndex === -1) {
-    return res.status(404).json({ error: 'Review not found' });
+    return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   if (reviews[reviewIndex].author_id !== logged_in_id) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Usuário precisa estar logado' });
   }
   
   const review = reviews[reviewIndex];
@@ -127,28 +127,28 @@ router.delete('/user/:id_user/historico/id_review/:id_review', (req: Request, re
   //check user
   const user = verifyUserId(parseInt(req.params.id_user));
   if (user === null) {
-    return res.status(404).json({ error: 'User not found' });
+    return res.status(404).json({ error: 'Usuário não encontrado' });
   }
 
   //check review id
   const review_to_delete = verifyReviewId(parseInt(req.params.id_review));
   if (review_to_delete === null) {
-    return res.status(404).json({ error: 'Review not found' });
+    return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   //check if review belongs to user
   if (review_to_delete.author_id !== user.id) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Não autorizado' });
   }
 
   const reviewIndex = reviews.findIndex((review_to_delete) => review_to_delete.id === parseInt(req.params.id));
 
   if (reviewIndex === -1) {
-    return res.status(404).json({ error: 'Review not found' });
+    return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   if (reviews[reviewIndex].author_id !== logged_in_id) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Usuário precisa estar logado' });
   }
 
   reviews.splice(reviewIndex, 1);
