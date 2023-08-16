@@ -18,7 +18,7 @@ const reviews: Review[] = [
       rating: 3,
       description: 'Muito legal, amei matar as hordas!',
       date: '2021-01-01',
-      categories: ['Zumbi', 'RPG'], 
+      categories: ["Zumbi", "RPG"], 
       comments: ['Muito bom mesmo!', 'Jogo muito bom, recomendo!'],
       likes: 2,
     },
@@ -29,7 +29,7 @@ const reviews: Review[] = [
       rating: 5,
       description: 'Jogo muito bom, recomendo!',
       date: '2021-05-03',
-      categories: ['Ação', 'Aventura', 'RPG'],
+      categories: ["Ação", "Aventura", "RPG"],
       comments: ['Muito bom mesmo!', 'Jogo muito bom, recomendo!'],
       likes: 5,
     },
@@ -40,7 +40,7 @@ const reviews: Review[] = [
       rating: 4,
       description: 'Jogo muito dificil, mas muito bom!',
       date: '2022-01-01',
-      categories: ['Ação', 'Aventura', 'Zumbi', 'RPG'],
+      categories: ["Ação", "Aventura", "Zumbi", "RPG"],
       comments: ['Muito bom mesmo!', 'Jogo muito bom, recomendo!'],
       likes: 3,
     },
@@ -51,10 +51,14 @@ const reviews: Review[] = [
       rating: 3,
       description: 'MineCraft no espaço, muito bom!',
       date: '2020-08-01',
-      categories: ['Aventura', 'RPG', 'Sobrevivência'],
+      categories: ["Aventura", "RPG", "Sobrevivência"],
       comments: ['Odiei o jogo!'],
       likes: 1,
     }
   ];
 
 export default reviews;
+
+export const getReviews = (): Review[] => {
+    return reviews;
+}

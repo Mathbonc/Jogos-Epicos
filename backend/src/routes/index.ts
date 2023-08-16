@@ -15,7 +15,7 @@ const logged_in_id = 1;
 //function to verify username
 function verifyUserId(id: number) {
   const user = users.find((user) => user.id === id);
-  console.log(users);
+  //console.log(users);
   if (!user) {
     return null;
   }
