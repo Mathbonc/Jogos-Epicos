@@ -37,11 +37,20 @@ router.get('/user/:id_user/historico', (req: Request, res: Response) => {
   const userid = parseInt(req.params.id_user);
   const user = verifyUserId(userid);
 
-  if (user === null) {
+  if (user === null) 
     return res.status(404).json({ error: 'Usuário não encontrado' });
-  }
+  
 
-  const review_list = reviews.filter((review) => review.author_id === user.id);
+  let review_list = reviews.filter((review) => review.author_id === user.id);
+
+  //para inverter a ordem da lista
+  // /user/:id_user/historico?desc=true
+  if (req.query.desc) 
+    review_list.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  else 
+    review_list.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  
+    
   res.json(review_list);
 });
 
