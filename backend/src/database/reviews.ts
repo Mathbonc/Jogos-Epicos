@@ -10,7 +10,7 @@ type Review = {
     likes: number;
   };
 
-const reviews: Review[] = [
+let reviews: Review[] = [
     {
       id: 1,
       author_id: 1,

@@ -24,7 +24,7 @@ function verifyUserId(id: number) {
 
 //function to verify review id
 function verifyReviewId(id: number) {
-  const review = reviews.find((review) => review.id === id);
+  const review = reviews.find((r) => r.id === id);
   if (!review) {
     return null;
   }
@@ -96,30 +96,26 @@ router.put('/user/:id_user/historico/id_review/:id_review', (req: Request, res: 
   }
 
   //check review id
-  const review_to_edit = verifyReviewId(parseInt(req.params.id_review));
+  let review_to_edit = verifyReviewId(parseInt(req.params.id_review));
   if (review_to_edit === null) {
     return res.status(404).json({ error: 'Review não encontrado' });
   }
 
   //check if review belongs to user
   if (review_to_edit.author_id !== user.id) {
-    return res.status(401).json({ error: 'Não autorizado' });
+    return res.status(404).json({ error: 'Não autorizado' });
   }
 
-  const reviewIndex = reviews.findIndex((review_to_edit) => review_to_edit.id === parseInt(req.params.id));
-
-  if (reviewIndex === -1) {
-    return res.status(404).json({ error: 'Review não encontrado' });
-  }
-
-  if (reviews[reviewIndex].author_id !== logged_in_id) {
-    return res.status(401).json({ error: 'Usuário precisa estar logado' });
+  if (review_to_edit.author_id !== logged_in_id) {
+    return res.status(404).json({ error: 'Usuário precisa estar logado' });
   }
   
-  const review = reviews[reviewIndex];
-  const updatedReview = { ...review, ...req.body };
-  reviews[reviewIndex] = updatedReview;
-  res.json(updatedReview);
+  const updatedReview = { ...review_to_edit, ...req.body };
+
+  reviews[parseInt(req.params.id_review) - 1] = updatedReview;
+  
+  res.json(reviews[parseInt(req.params.id_review) - 1]);
+  
 });
 
 //Route to delete a review by id
@@ -141,18 +137,21 @@ router.delete('/user/:id_user/historico/id_review/:id_review', (req: Request, re
     return res.status(401).json({ error: 'Não autorizado' });
   }
 
-  const reviewIndex = reviews.findIndex((review_to_delete) => review_to_delete.id === parseInt(req.params.id));
 
-  if (reviewIndex === -1) {
-    return res.status(404).json({ error: 'Review não encontrado' });
-  }
-
-  if (reviews[reviewIndex].author_id !== logged_in_id) {
+  if (review_to_delete.author_id !== logged_in_id) {
     return res.status(401).json({ error: 'Usuário precisa estar logado' });
   }
 
-  reviews.splice(reviewIndex, 1);
-  res.sendStatus(204);
+  //delete review
+  const index = reviews.findIndex((review) => review.id === review_to_delete.id);
+
+  if (index !== -1) {
+    reviews.splice(index, 1);
+    return res.status(200).json({ message: 'Review deletado com sucesso' });
+  }
+  else {
+    return res.status(404).json({ error: 'Review não encontrado*' });
+  }
 });
 
 export default (app: Express) => {
