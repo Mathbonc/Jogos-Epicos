@@ -3,17 +3,6 @@ As a usuário.
 I want to adicionar os jogos que já joguei, quero jogar ou abandonei em uma lista.
 So that I possa compartilhar minhas opiniões sobre um jogo e acompanhar as opiniões de quem eu me interesso.
 
-Scenario: Adicionar jogo como “Finalizou”, com nota e sem review
-    Given o usuário "Davi" está em qualquer página do sistema
-    When o usuário "Davi" seleciona a opção “Adicionar Jogo”
-    And o usuário "Davi" escolhe o jogo "Hollow Knight"
-    And o usuário "Davi" seleciona a opção "Finalizado"
-    And o usuário "Davi" dá nota ao jogo
-    And o usuário "Davi" não escreve uma review
-    And o usuário "Davi" seleciona a opção "Submeter"
-    Then o usuário "Davi" visualiza uma mensagem de sucesso And o usuário "Davi" continua na página que estava inicialmente
-    And o jogo "Hollow Knight" está na lista de jogos do usuário "Davi" como "Finalizado"
-
 
 Scenario: Adicionar jogo como “Finalizou”, com nota e com review, com título
     Given o usuário "Davi" está em qualquer página do sistema
@@ -137,13 +126,3 @@ Scenario: Ordenar a lista de jogos de um usuário por critério
     And o usuário "João" seleciona a opção "Ordenar por"
     When o usuário "João" seleciona a opção "Nome"
     Then o usuário "João" visualiza os jogos do usuário "Davi" ordenados por nome
-
-
-Scenario: Adicionar um comentário na review de um usuário
-    Given o usuário "João" está na página da lista de jogos do usuário "Davi"
-    And o usuário "Davi" tem uma entrada na lista de jogos com o título "Hollow Knight"
-    And o usuário "Davi" escreveu uma review para o jogo "Hollow Knight"
-    When o usuário "João" seleciona a opção "Comentar" da review "Hollow Knight é um jogo muito bom"
-    And o usuário "João" escreve o comentário "Concordo"
-    And o usuário "João" seleciona a opção "Submeter"
-    Then o usuário "João" visualiza uma mensagem de sucesso 
