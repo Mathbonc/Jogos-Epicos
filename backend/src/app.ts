@@ -6,6 +6,7 @@ import setupRoutes from './routes/index';
 import { HttpError } from './utils/errors/http.error';
 import { FailureResult } from './utils/result';
 import Database from './database';
+import users from './database/users';
 
 const app: express.Express = express();
 app.use(express.json());

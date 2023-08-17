@@ -1,0 +1,38 @@
+  Scenario: Client follows a user that does not exist
+    Given that the service authenticates the client as "Alice"
+    And the profile service returns no profile for "Bob"
+    When the client sends a POST to the endpoint "/users/:id/follow", with the body "{ id: 2 }"
+    Then the service should return a 404 status and the message "{ \"message\": \"User not found\" }"
+
+  Scenario: Client unfollows a user
+    Given that the service authenticates the client as "Alice"
+    And the profile service returns an existing profile for "Bob"
+    When the client sends a DELETE to the endpoint "/users/:id/unfollow", with the body "{ id: 2 }"
+    Then the service should return a 200 status and the message "{ \"message\": \"User unfollowed successfully\" }"
+    And "Bob" should be removed from the list of users that the client is following
+    And the client should be removed from the list of followers for "Bob"
+
+  Scenario: Client doesnt exist
+    Given that the service authenticates the client as "Unknown"
+    And the profile service returns an existing profile for "Bob"
+    When the client sends a POST to the endpoint "/users/:id/follow", with the body "{ id: 100 }"
+    Then the service should return a 404 status and the message "{ \"message\": \"User not found\" }"
+
+  Scenario: Client follows a user that he's already following
+    Given that the service authenticates the client as "Alice"
+    And the profile service returns an existing profile for "Bob"
+    And "Bob" is already in the list of users that the client is following
+    When the client sends a POST to the endpoint "/users/:id/follow", with the body "{ id: 2 }"
+    Then the service should return a 400 status and the message "{ \"message\": \"You are already following this user\" }"
+
+  Scenario: Client unfollows a user that does not exist
+    Given that the service authenticates the client as "Alice"
+    And the profile service returns no profile for "Bob"
+    When the client sends a DELETE to the endpoint "/users/:id/unfollow", with the body "{ id: 2 }"
+    Then the service should return a 404 status and the message "{ \"message\": \"User not found\" }"
+
+  Scenario: Client unfollows a user that he doesnt follow
+    Given that the service authenticates the client as "Alice"
+    And the profile service returns an existing profile for "Bob"
+    When the client sends a DELETE to the endpoint "/users/:id/follow", with the body "{ id: 2 }"
+    Then the service should return a 400 status and the message "{ \"message\": \"You are not following this user\" }"
