@@ -1,25 +1,34 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+var app = require('express')();
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
 
 interface Comment {
-  username: string;
+  user_id: number;
   comment: string;
   timestamp: Date;
 }
 
 let comments: Comment[] = [];
 
+
 app.get('/', (req, res) => {
   res.render('index', { comments });
 });
 
 app.post('/comment', (req, res) => {
-  const { username, comment } = req.body;
+  const { user_id, comment } = req.body;
 
   if (!comment.trim()) { //verifica se algum comentário foi escrito
     res.status(400).send('Comment cannot be empty.');
     return;
   }
 
-  const newComment: Comment = { username, comment, timestamp: new Date() };
+  const newComment: Comment = { user_id, comment, timestamp: new Date() };
   comments.unshift(newComment);
   res.redirect('/');
 });
@@ -38,7 +47,7 @@ app.put('/edit/:commentId', (req, res) => {
     return;
   }
 
-  if (targetComment.username !== req.body.username) {
+  if (targetComment.user_id !== req.body.user_id) {
     res.status(403).json({ message: 'You are not authorized to edit this comment.' });
     return;
   }
@@ -47,3 +56,7 @@ app.put('/edit/:commentId', (req, res) => {
   res.status(200).json({ message: 'Comment updated successfully.' });
 });
 
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
