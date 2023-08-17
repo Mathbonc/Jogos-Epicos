@@ -56,7 +56,3 @@ app.put('/edit/:commentId', (req, res) => {
   res.status(200).json({ message: 'Comment updated successfully.' });
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
