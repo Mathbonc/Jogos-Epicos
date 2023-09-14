@@ -1,88 +1,31 @@
-.feed-container {
-  max-height: 65vh;
-  overflow-y: auto;
+.see-more{
+  cursor: pointer;
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
+.username {
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #fff;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #f5f8fa;
-  }
-
-  /* Improved spacing and padding for posts */
-  .post {
-    border-bottom: 1px solid #e1e8ed;
-    padding: 20px;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: hsl(0, 0%, 28%);
-    }
-
-    .author-info {
-      display: flex;
-      align-items: center;
-
-      /* Add spacing between profile picture and author info */
-      margin-bottom: 10px;
-
-      .profile-picture {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-
-        /* Add a subtle shadow to profile pictures */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .author {
-        margin-left: 10px;
-        font-weight: bold;
-        color: #fff;
-        text-decoration: none;
-        transition: color 0.3s;
-        cursor: pointer;
-
-        &:hover {
-          color: #0070cc;
-        }
-      }
-    }
-
-    /* Style content and date */
-    .content {
-      margin-top: 10px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .date {
-      font-size: 12px;
-      color: #657786;
-    }
-
-    .see-more {
-      cursor: pointer;
-      color: #1da1f2;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #0070cc;
-      }
-    }
+  &:hover {
+    text-decoration: underline;
+    color: rgb(131,0,0);
   }
 }
 
-/* Style tabs */
+.profile-picture {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.author-info {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+}
+
 .tabs {
   display: flex;
   border-bottom: 1px solid #e1e8ed;
@@ -96,79 +39,81 @@
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s;
-    color: #fff;
+    color: rgb(255, 0, 170);
 
     &.active {
-      background-color: #ba0e0e;
+      background-color: #ffffff;
     }
 
     &:hover {
-      background-color: #bf5441;
+      background-color: #f5f8fa;
+    }
+  }
+}
+
+.feed-container {
+  max-height: 65vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(131,0,0);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f5f8fa;
+  }
+}
+
+.post {
+  border-bottom: 1px solid #e1e8ed;
+  padding: 20px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: hsl(0, 0%, 28%);
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .author {
+    margin: 1%;
+    font-weight: lighter;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      color: rgb(131,0,0);
     }
   }
 
-.rating {
-  display: inline-block;
-  height: 10px;
-  line-height: 10px;
-  font-size: 20px;
-  margin-left: 10px;
-}
+  .date {
+    font-size: 12px;
+    color: #657786;
+  }
 
-.rating label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  cursor: pointer;
-}
+  p {
+    margin-top: 10px;
+  }
 
-.rating label:last-child {
-  position: static;
-}
-.rating label:nth-child(1) {
-  z-index: 5;
-}
+  a {
+    color: rgb(131,0,0);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
 
-.rating label:nth-child(2) {
-  z-index: 4;
-}
-
-.rating label:nth-child(3) {
-  z-index: 3;
-}
-
-.rating label:nth-child(4) {
-  z-index: 2;
-}
-
-.rating label:nth-child(5) {
-  z-index: 1;
-}
-
-.rating label input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-
-.rating label .icon {
-  float: left;
-  color: transparent;
-}
-
-.rating label:last-child .icon {
-  color: #fff;
-}
-
-.rating:not(:hover) label input:checked ~ .icon,
-.rating:hover label:hover input ~ .icon {
-  color: #ffff00;
-}
-
-.rating label input:focus:not(:checked) ~ .icon:last-child {
-  color: #000;
-  text-shadow: 0 0 5px #09f;
-}
+    &:hover {
+      color: rgb(131,0,0)
+    }
+  }
 }

@@ -14,8 +14,7 @@ import { FollowersComponent } from '../followers/followers.component';
 import { FeedComponent } from '../feed/feed.component';
 import { EditComponent } from './components/edit/edit.component';
 import { GameListComponent } from '../game-list/game-list.component';
-import { PostComponent } from './components/post/post.component';
-import { PostDetailComponent } from './components/postDetails/postDetails.component';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +22,7 @@ import { PostDetailComponent } from './components/postDetails/postDetails.compon
     UserComponent,
     FollowersComponent,
     FeedComponent,
-    EditComponent,
-    PostComponent,
-    PostDetailComponent
+    EditComponent
   ],
   imports: [
     //Necessário importar o módulo de rotas do profile

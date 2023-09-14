@@ -16,10 +16,9 @@ import { EditBtnComponent } from './components/editBtn/editBtn.component';
 import { FollowBtnComponent } from './components/follow-btn/follow-btn.component';
 import { PostBtnComponent } from './components/post-btn/post-btn.component';
 import { UnfollowBtnComponent } from './components/unfollow-btn/unfollow-btn.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
-    declarations: [DataCyDirective, ButtonComponent, EditBtnComponent, FollowBtnComponent, PostBtnComponent, UnfollowBtnComponent, StarRatingComponent],
+    declarations: [DataCyDirective, ButtonComponent, EditBtnComponent, FollowBtnComponent, PostBtnComponent, UnfollowBtnComponent],
     imports: [
         CommonModule,
         MatInputModule,
@@ -40,7 +39,6 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
         FollowBtnComponent,
         PostBtnComponent,
         UnfollowBtnComponent,
-        StarRatingComponent
     ],
     providers: [
         // TODO: Add services here

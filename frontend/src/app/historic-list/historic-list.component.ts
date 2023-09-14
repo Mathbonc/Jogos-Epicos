@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../../../../backend/src/models/post.model';
-  
+
 @Component({
   selector: 'app-historic-list',
   templateUrl: './historic-list.component.html',
@@ -11,8 +11,6 @@ import { Post } from '../../../../backend/src/models/post.model';
 
 export class HistoricListComponent implements OnInit {
   userId: number = 1;
-  postId: number = 1;
-  post: Post = {} as Post;
   show_posts: Post[] = [];
   all_posts: Post[] = [];
   isDesc: boolean = false;
@@ -22,9 +20,6 @@ export class HistoricListComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-
-    this.userId = Number(this.route.snapshot.paramMap.get('id'));
-    this.postId = Number(this.route.snapshot.paramMap.get('post_id'));
 
     if (this.route.parent) {
       this.route.parent.params.subscribe(params => {
@@ -42,14 +37,6 @@ export class HistoricListComponent implements OnInit {
       this.getHistoric();
     else
       this.getHistoryByCategory(this.selectedCategory);
-  }
-
-  starClass(index: number, rating: number): string {
-    if (index < rating) {
-      return 'yellow';
-    } else {
-      return 'white';
-    }
   }
 
   // Obter todas as categorias dos posts do usuário
@@ -99,8 +86,8 @@ export class HistoricListComponent implements OnInit {
   }
 
   // Mudar para a rota dos posts
-  openPost(userId: number, postId: number) : void {
-    this.router.navigate([`/users/${userId}/${postId}`]);
+  public goToPost(): void {
+    this.router.navigate(['/users', this.userId]);
   }
 
 }

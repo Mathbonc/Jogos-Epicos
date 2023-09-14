@@ -55,9 +55,7 @@ router.get('/search/users/:query', async (req,res) => {
 });
 
 // -------------------------------- POST CREATION ROUTES -------------------------------- //
-
-
-router.post('/post', async (req: Request, res: Response) => {
+router.post('/posts', async (req: Request, res: Response) => {
   const { category, game, rate, title, description } = req.body;
   const userId = loggedID
 
@@ -87,21 +85,6 @@ router.post('/post', async (req: Request, res: Response) => {
     post: newPost,
   } );
 });
-
-// router.get('/users/:id/:post_id', (req,res) => {
-//   const post_id = parseInt(req.params.post_id);
-//   loggedID = getAuthenticatedUserID();
- 
-//   const requestedPost = posts.find(post => post.post_id === post_id);
-  
-//   if(!requestedPost){
-//     return res.status(404).json({ Error : 'User not found' });
-//   }
-
-//   //PRINT USER PROFILE INFO
-//   res.status(200).json(requestedPost);
-// });
-
 
 // Route to delete a post
 router.delete('/posts/:user_id/:post_id', async (req: Request, res: Response) => {
