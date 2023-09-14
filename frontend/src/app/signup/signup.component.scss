@@ -1,0 +1,70 @@
+.background {
+    background-image: url('../../assets/background/20.jpg'); /* Substitua com a URL da sua imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: white;
+  }
+  
+  .form-container-bg{
+    background-color: rgb(49, 49, 49);
+    margin-right: 0px;
+    height: 100%;
+    width: 450px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container {
+    padding: 20px;
+    width: 400px;
+  }
+  
+  .form-container h1 {
+    font-size: 40px; 
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: rgb(131, 0, 0); /* Cor do botão */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(87, 0, 0); /* Cor do botão ao passar o mouse */
+  }
+
+  .back{
+    margin-left: 176px;
+  }
+  
+  .error-message{
+    color: red;
+  }
+  

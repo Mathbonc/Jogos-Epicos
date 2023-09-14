@@ -1,0 +1,179 @@
+.game-list {
+    color: #fff; 
+    background-color:transparent; 
+    padding: 2%;
+    border-radius: 10px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 65vh;
+    overflow: auto;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.title {
+    background-image: linear-gradient(to right, #272624 0%, #443f3d 100%, #272624 100%);
+    padding: 1%;
+    text-align: center; 
+    border-radius: 5px;
+}
+
+.title-text {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between; /* Spread the elements out */
+    align-items: center; /* Align items vertically */ 
+    background-color: white;
+}
+
+.game-search {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 20%;
+}
+
+.checkbox{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    color: black;
+}
+
+.game-order{
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 20%;
+    color: black;
+
+}
+
+.button-order{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;  
+    height: auto;
+    width: auto;
+    color: black;
+    background-color: transparent;
+}
+
+.add-button-box{   
+    height: auto;
+    width: auto;
+    color: white;
+    background-color: rgba(220, 220, 220, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.add-button{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;  
+    height: auto;
+    width: auto;
+}
+.add-box{
+    height: 200px;
+    width: auto;
+    color: white;
+    background-color: rgba(220, 220, 220, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.add-input{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 80%;
+    color: black;
+    background-color: transparent;
+}
+.auto-option{
+    align-items: center;
+    position: relative;
+}
+.auto-image{
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    margin-top: 2%;
+}
+.button-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.add-button-def{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;  
+    height: 40%;
+    width: auto;
+}
+.entry-list{
+    padding-top: 2%;
+}
+
+.entry-card{
+    background-color:white;
+    align-content: flex-start;
+    color:#272624;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    flex-flow: column wrap; 
+    padding: 10px;
+    position: absolute;
+}
+
+.card-image{
+    width: 40%;
+    object-fit: cover;
+}
+.card-actions{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.index{
+    color:black;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: auto;
+    width: auto;
+}
+.entry-type{
+    border-radius: 10px;
+}
+
+.card-delete{
+    background-color:white;
+    align-content:center;
+    color:#272624;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    flex-flow: column wrap; 
+    padding: 10px;
+    position: absolute;
+}

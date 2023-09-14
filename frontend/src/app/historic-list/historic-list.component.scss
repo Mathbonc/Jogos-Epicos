@@ -1,0 +1,77 @@
+.history-container {
+    max-height: 65vh;
+    overflow-y: auto;
+  
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(131, 0, 0);
+      border-radius: 4px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: #f5f8fa;
+    }
+}
+
+.title {
+  background-image: linear-gradient(to right, #272624 0%, #443f3d 100%, #272624 100%);
+  padding: 1%;
+  text-align: center; 
+  border-radius: 5px;
+}
+
+.title-text {
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.buttons-list button:hover svg path {
+  fill: white; /* Define a cor branca para o ícone quando o botão está ativo (clicado) */
+}
+
+.buttons-list {
+    display: flex;
+    border-bottom: 1px solid #e1e8ed;
+    margin-bottom: 10px;
+
+  
+    button {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      color: rgb(131, 0, 0);
+  
+      &.active {
+        background-color: rgb(136, 0, 0);
+        color: white;
+      }
+  
+      &:hover {
+        background-color: rgb(131, 0, 0);
+        color: white;
+      }
+    }
+  }
+
+.post {
+    border-bottom: 1px solid #e1e8ed;
+    padding: 20px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: hsl(0, 0%, 28%);
+    }
+  
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,10 @@
+<div class="search-container">
+    <input type="text" [(ngModel)]="query" (input)="onSearch()" placeholder="Pesquise usuários..."
+           class="search-input" />
+    <div *ngIf="users.length" class="search-results">
+        <div *ngFor="let user of users" (click)="onUserClick(user.id)" class="user">
+            <img [src]="_getProfileImage(user.id)" alt="Foto do perfil" class="profile-picture" />
+            <p><strong>@{{ user.user }}</strong> {{ user.name }} {{ user.lastName }}</p>
+        </div>
+    </div>
+</div>

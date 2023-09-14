@@ -10,3 +10,12 @@ package-lock.json
 package.json
 setupTests.js
 tsconfig.json
+frontend/.env.dev
+.vscode/
+angular.json
+package-lock.json
+package.json
+frontend/src/index.html
+frontend/src/styles.scss
+frontend/cypress.config.ts
+frontend/cypress.config.ts

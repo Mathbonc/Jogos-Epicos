@@ -1,0 +1,74 @@
+/* Estilos para o contêiner principal */
+mat-card {
+    background-color: rgba(0,0,0,0);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 auto;
+    height: 500px; /* Defina a altura desejada aqui */
+  }
+  
+  /* Estilos para o título "Edit User" */
+  h2 {
+    text-align: center;
+  }
+  
+  /* Estilos para os campos de entrada do formulário */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Estilos para os rótulos dos campos de entrada */
+  mat-label {
+    font-weight: bold;
+  }
+
+  /* Estilos para os campos de entrada de texto e email */
+  input{
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para o botão "Salvar" */
+  button {
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;    
+  }
+
+  .purple{
+    background-color: rgb(168, 38, 255);
+  }
+
+  /* Botão verde */
+  .green {
+    background-color: green;
+  }
+  .green:hover {
+    background-color: rgb(1, 110, 1);
+  }
+
+  /* Botão vermelho */
+  .red {
+    background-color: red;
+  }
+  .red:hover {
+    background-color: rgb(189, 2, 2);
+  }
+  
+  button:hover {
+    background-color: rgb(140, 32, 212);
+  }
+
+  .error-message{
+    color: red;
+  }
+
+  :disabled {
+    cursor: not-allowed;
+  }
+  

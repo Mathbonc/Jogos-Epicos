@@ -1,0 +1,11 @@
+    <div class="tab">
+        <div class="title">{{followListTitle}}</div>
+        <div class="inside-tab">
+            <mat-card class="tab-content">
+                <div *ngFor="let user of followListShow" class="user" (click)="navigateToUser(user.id)">
+                    <img [src]="_getProfileImage(user.id)" alt="Foto de perfil de {{ user.name }}" class="profile-picture">
+                    <strong class="username">@{{user.user}}</strong> {{ user.name }} {{ user.lastName }}
+                </div>
+            </mat-card>
+        </div>
+    </div>

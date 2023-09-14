@@ -1,0 +1,86 @@
+<div class="profile-page">
+    <div class="popup-container">
+        <div class="popup" *ngIf="followPopUp" (click)="closePopUp()">
+            <app-followers
+                [userId]="userId"
+                [activeTab]="activeTab"
+                (followersCountUpdated)="updateFollowersCount($event)"
+                (followingCountUpdated)="updateFollowingCount($event)"
+                (followersListUpdated)="updateFollowersList($event)"
+                (followingListUpdated)="updateFollowingList($event)">
+            </app-followers>
+        </div>
+    </div>
+    <!-- Plano de fundo -->
+    <div class="background">
+        <img
+            [src]="_getBackgroundImage()"
+            alt="Foto de fundo do perfil"
+            class="profile-background-picture" />    
+    </div>
+
+    <div class="profile-background">
+    </div>
+    <!-- Retângulo vertical para informações do perfil -->
+    <div class="profile-content">
+        <!-- Informações do perfil -->
+
+        <div class="profile-left">
+            <div class="profile-info">
+                <!-- Foto do perfil -->
+                <img
+                    [src]="_getProfileImage()"
+                    alt="Foto do perfil"
+                    class="profile-picture" />
+                <div class="user-info">
+                    <h1 class="username" (click)="goToRoute('')"><strong class="username">{{user.name}} {{user.lastName}}</strong><strong class="userUser">@{{user.user}}</strong></h1>
+                    <p class="user-bio">{{user.bio}}</p>
+                    <div class="follow-section">
+                        <div class="followapp">
+                            <app-followers 
+                                [userId]="userId"
+                                (followersCountUpdated)="updateFollowersCount($event)"
+                                (followingCountUpdated)="updateFollowingCount($event)"
+                                (followersListUpdated)="updateFollowersList($event)"
+                                (followingListUpdated)="updateFollowingList($event)">
+                            </app-followers>
+                        </div>
+                        <div *ngIf="!isUserLoggedIn">
+                            <app-follow-btn (click)="followUser()" class="follow-btn" *ngIf="!isFollowing"></app-follow-btn>
+                            <app-unfollow-btn (click)="unfollowUser()" class="unfollow-btn" *ngIf="isFollowing"></app-unfollow-btn>
+                        </div>
+                        <div class="follows">
+                            <div class="follower" (click)="followerButton()">
+                                <div class="follower-counter">{{followersCount}}</div>
+                                <p class="follower-text">Seguidores</p>
+                            </div>
+                            <div class="following" (click)="followingButton()">
+                                <div class="follower-counter">{{followingCount}}</div>
+                                <p class="follower-text">Seguindo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <router-outlet class = "misc-info"></router-outlet>
+
+        </div>
+
+    <div class="profile-right">
+
+      <app-edit-btn class="editbtn" (click)="editButton()" *ngIf="isUserLoggedIn" [goToEdit]="!goToEdit"></app-edit-btn>
+      <app-button class="editbtn" (click)="goToLoggedProfile()" *ngIf="!isUserLoggedIn" label="Meu Perfil" type="btn medium colorred"></app-button> 
+
+      <app-button (click)="goToRoute('/list')" label="Lista de jogos" type="btn medium colorred"></app-button> 
+      <app-button (click)="goToRoute('/history')" label="Histórico" type="btn medium colorred"></app-button>
+      <app-button (click)="goToHome()" label="Home" type="btn medium colorred"></app-button>
+
+      <app-button class="postbtn" (click)="deleteAccount()" label="Excluir conta" type="btn small deletebtn" *ngIf="!goToEdit"></app-button> 
+      <!-- <app-post-btn class="postbtn" (click)="goToRoute('/post')" *ngIf="goToEdit"></app-post-btn> -->
+    </div>
+
+        <!-- Outras informações, como jogos favoritos, conquistas, etc. -->
+        <!-- Você pode adicionar mais elementos aqui -->
+    </div>
+</div>

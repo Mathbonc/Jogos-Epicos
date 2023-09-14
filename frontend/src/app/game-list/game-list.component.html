@@ -1,0 +1,113 @@
+<div class="game-list"> 
+    <div class="title">
+        <h1 class="title-text">LISTA DE JOGOS</h1>
+    </div>
+    <div class="top-bar">
+        <mat-form-field class="game-search">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput (input)="_setPreffix($event)" placeholder="Nome do Jogo">
+        </mat-form-field>
+
+        <mat-checkbox class="checkbox" color="primary" checked="true" (change)="_setPlayed($event)">Finalizados</mat-checkbox>
+        <mat-checkbox class="checkbox" color="primary" checked="true" (change)="_setAbandoned($event)">Abandonados</mat-checkbox>
+        <mat-checkbox class="checkbox" color="primary" checked="true" (change)="_setWishlist($event)">Deseja Jogar</mat-checkbox>
+
+        <mat-form-field class="game-order">
+            <mat-label>Ordenar por</mat-label>
+            <mat-select value="date" placeholder="Mode" (selectionChange)="_setOrder($event)">
+                <mat-option value="title">Nome</mat-option>
+                <mat-option value="date">Data de Inclusão</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-fab color="primary" aria-label="Trocar ordem crescente e decrescente" class = "button-order" (click)="_changeDir()">
+            <mat-icon>swap_vert</mat-icon>
+        </button>
+    </div>
+    <div class="add-section" *ngIf="isUserLoggedIn">
+        <div class="add-button-box" *ngIf="!isAdding">
+            <button mat-raised-button color="primary" aria-label="Adicionar jogo" class = "add-button" (click) = "_setAdding()">
+                <mat-icon>add</mat-icon>
+                Adicionar Jogo
+            </button>
+        </div>
+        <div class="add-box" *ngIf="isAdding">
+            <mat-form-field class="add-input">
+                <mat-label>Adicionar na Lista</mat-label>
+                <input type="text"
+                       placeholder="Adicionar Jogo"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto"
+                       class="add-input"
+                       (input)="_setAddingGameName($event)">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_setAddGame($event.option.value)">
+                  <mat-option *ngFor="let option of filteredGameOption" [value]="returnGameTitle(option)" class="auto-option">
+                    <img class="game-image" [src]="_getGameImage(option)" class="auto-image">
+                    <span class="auto-text">
+                        {{returnGameTitle(option)}}
+                    </span>
+                  </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            
+            <mat-chip-listbox (change)="_setAddType($event)">
+                <mat-chip-option *ngFor="let entrytype of entrytypes" [color]="_getEntryTypeColor(entrytype)">
+                    {{_getEntryName(entrytype.toString())}}
+                    
+                </mat-chip-option>
+            </mat-chip-listbox>
+            <div class="button-row">
+                <button mat-flat-button color="primary" class = "add-button-def" (click) = "_finishAdding(true)">
+                    <mat-icon>add</mat-icon>
+                    Adicionar Jogo
+                </button>
+                <button mat-flat-button color="warn" class = "add-button-def" (click) = "_finishAdding(false)">
+                    <mat-icon>cancel</mat-icon>
+                    Cancelar
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="5:1" gutterSize="1em" class="entry-list">
+        <mat-grid-tile *ngFor="let entry of showGamesList.entries; let i = index" class="entry-tile">
+            <mat-card class="entry-card" *ngIf="!isDelete[i]">
+                <img [src] = "_getGameImage(entry.gameId)" class="card-image">
+                <mat-card-header>
+                    <mat-card-title>{{returnGameTitle(entry.gameId)}}</mat-card-title>
+                    <mat-card-subtitle>{{_getDateString(entry.date)}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <button mat-flat-button class="entry-type" [color]="_getEntryTypeColor(entry.entryType)" *ngIf="!isEdit[i]">
+                        {{_getEntryName(entry.entryType)}}
+                    </button>
+                    <mat-chip-listbox *ngIf="isEdit[i]" (change)="_setEditSave($event, i)">
+                        <mat-chip-option *ngFor="let entrytype of entrytypes" [color]="_getEntryTypeColor(entrytype)">
+                            {{_getEntryName(entrytype.toString())}}
+                        </mat-chip-option>
+                    </mat-chip-listbox>
+                </mat-card-content>
+                <mat-card-actions class="card-actions" *ngIf="isUserLoggedIn">
+                    <button mat-button color="primary" (click)="_setEdit(i)"    *ngIf="isView[i]">Editar</button>
+                    <button mat-button color="warn"    (click)="_setDelete(i)"  *ngIf="isView[i]">Excluir</button>
+                    <button mat-button color="accent"  (click)="_setSave(i)"    *ngIf="isEdit[i]">Salvar</button>
+                    <button mat-button color="warn"    (click)="_setView(i)"    *ngIf="isEdit[i]">Cancelar</button>                        
+                </mat-card-actions>
+                <mat-chip class="index">{{i + 1}}</mat-chip>
+            </mat-card>
+            <mat-card class="card-delete" *ngIf="isDelete[i]">
+                <mat-card-header>
+                    <mat-card-title>Excluir "{{returnGameTitle(entry.gameId)}}" da sua lista?</mat-card-title>
+                    <mat-card-subtitle>Entrada adicionada em : {{_getDateString(entry.date)}}</mat-card-subtitle>
+                    <img [src] = "_getGameImage(entry.gameId)" matCardAvatar>
+                </mat-card-header>
+                <mat-card-actions>
+                    <button mat-button color="warn" (click)="_setDeleteConfirm(i)">Confirmar</button>
+                    <button mat-button color="primary" (click)="_setView(i)">Cancelar</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>
+</div>

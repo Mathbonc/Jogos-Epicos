@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-content>
+      <h2>Edit User</h2>
+      <form #editForm="ngForm">
+
+        <!-- Todos os forms para edição -->
+  
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input [disabled]="disabled" matInput [(ngModel)]="user.email" name="Email" required>
+            <div *ngIf="formErrors.email" class="error-message">{{ formErrors.email }}</div>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input [disabled]="disabled" matInput [(ngModel)]="user.password" name="Senha" required>
+            <div *ngIf="formErrors.password" class="error-message">{{ formErrors.password }}</div>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input [disabled]="disabled" matInput [(ngModel)]="user.name" name="Nome" required>
+        </mat-form-field>
+
+        <mat-form-field>
+        <mat-label>Sobrenome</mat-label>
+        <input [disabled]="disabled" matInput [(ngModel)]="user.lastName" name="Sobrenome" required>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Pronome</mat-label>
+            <input [disabled]="disabled" matInput [(ngModel)]="user.pronouns" name="Pronome" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Bio</mat-label>
+            <input [disabled]="disabled" matInput [(ngModel)]="user.bio" name="Bio" required>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" (click)="saveChanges()"
+        [class.green]="saved" [class.red]="notSaved" class="purple" [disabled]="disabled">Salvar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

@@ -1,0 +1,39 @@
+.home-page {
+    background-color: rgb(22, 8, 80);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; /* Define a altura para ocupar toda a altura da tela */
+    background-image: url("../../assets/background/13.jpg");
+}
+
+.logo {
+    background: url("../../assets/logo.png") no-repeat;
+    background-size: contain; /* ou 'cover', dependendo do comportamento desejado */
+    position: fixed;
+    height: 300px;
+    width: 300px;
+    margin-top: 3%;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Define a altura para ocupar toda a altura da tela */
+    top: 0;
+}
+
+.link {
+    text-decoration: none;
+    color: white; 
+    margin-bottom: 5%;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+// Hover link
+.link:hover {
+    color: rgb(126, 126, 126);
+}

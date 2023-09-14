@@ -1,0 +1,24 @@
+<div class="history-container"> 
+    <div class="title">
+        <h1 class="title-text">HISTÓRICO DE POSTS</h1>
+    </div>
+    <div class="buttons-list">
+        <button class="arrows"(click)="HistoryOrder()">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M9.9 6.417a1 1 0 0 1-.9.571H6V17a1 1 0 0 1-2 0V6.988H1a1 1 0 0 1-.9-.571.983.983 0 0 1 .12-1.051l4-5.006a1.024 1.024 0 0 1 1.56 0l4 5.006a.983.983 0 0 1 .12 1.051zm8 5.166a1 1 0 0 0-.9-.571h-3V1a1 1 0 0 0-2 0v10.012H9a1 1 0 0 0-.9.571.983.983 0 0 0 .12 1.051l4 5.006a1.024 1.024 0 0 0 1.56 0l4-5.006a.983.983 0 0 0 .12-1.051z" fill="rgb(131,0,0)" fill-rule="evenodd"/>
+                </svg>
+            </div> 
+        </button>
+        <button class="categories" *ngFor="let category of availableCategories" (click)="getHistoryByCategory(category)" [class.active]="selectedCategory === category">{{category}}</button>
+        <button class="all" [class.active]="selectedCategory === 'all'" (click)="showAll()">All</button>
+    </div>
+    <div *ngFor="let post of show_posts" class="post" (click)="goToPost()">
+        <h1><strong>{{post.title}}</strong></h1>
+        <p style="font-size: 18px;" class="game"><strong>Jogo:</strong> {{post.game}}</p>
+        <p style="font-size: 18px;" class="categories"><strong>Categorias:</strong> {{ post.category.join(', ') }}</p>
+        <p style="font-size: 18px;" class="rate"><strong>Nota:</strong> {{ post.rate }}</p>
+        <p style="font-size: 18px;" class="date"><strong>Data:</strong> {{ post.date }}</p>
+    </div>
+</div>
+

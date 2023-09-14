@@ -1,4 +1,4 @@
-enum EntryType {
+  enum EntryType {
     PLAYED = 'played',
     WISHLIST = 'wished',
     ABANDONED = 'abandoned'

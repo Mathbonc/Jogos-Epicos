@@ -7,22 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
-import { CreateItemComponent } from './components/create-item/create-item.component';
-import { ItemsComponent } from './pages/items/items.component';
-import { ListItemsComponent } from './components/list-items/list-items.component';
-import { HomeFacade } from './home.facade';
-import { HomeApi } from './api/home.api';
-import { HomeState } from './state/home.state';
-import { HomeInitializerProvider } from './home.initializer';
+import { FindComponent } from '../find/find.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         HomeComponent,
-        CreateItemComponent,
-        ItemsComponent,
-        ListItemsComponent,
+        FindComponent
     ],
     imports: [
         CommonModule,
@@ -32,8 +25,10 @@ import { HomeInitializerProvider } from './home.initializer';
         MatFormFieldModule,
         MatInputModule,
         MatListModule,
+        FormsModule
     ],
-    providers: [HomeFacade, HomeApi, HomeState, HomeInitializerProvider],
+    providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class HomeModule {}

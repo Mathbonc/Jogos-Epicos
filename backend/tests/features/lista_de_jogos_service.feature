@@ -102,7 +102,7 @@ Scenario: The user deletes a game from its own list.
     And the list with id "1" has a entry with id "1" corresponding to a game with id "1" and entryType "abandoned" and reqDate "2021-05-04"
     And the list with id "1" has a entry with id "2" corresponding to a game with id "3" and entryType "played" and reqDate "2021-05-04"
     When the user sends a DELETE to the endpoint "/api/users/1/list/1"
-    Then the response should return a sucess message
+    Then the response should return a success message
     And return status code "200"
 
 Scenario: The user tries to delete a game from another users list.
@@ -173,6 +173,3 @@ Scenario: The user tries to sort another users list by "Color", in ascending ord
     When the user sends a GET to the endpoint "/api/users/2/list/color/asc"
     Then the response should return an error message
     And return status code "400"
-
-
-

@@ -1,0 +1,51 @@
+/* Estilos para o contêiner da lista de seguidores */
+.profile-picture {
+  border-radius: 50%;
+  width: 5%;
+  height: 5%;
+  margin-right: 2%; 
+}
+
+.username {
+  margin-right: 0.5%;
+  font-size: 15px;
+  color: gray;
+}
+
+.tab {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 600px;
+    margin: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .inside-tab {
+    overflow-y: auto;
+    max-height: 100px;
+  }
+  
+  .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in-out;
+    justify-content: left;
+  }
+  
+  .user:hover {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
